@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,10 +8,13 @@ public class Main {
         String yellow = "\033[0;33m";
         String reset = "\033[0m";
 
+        ArrayList<cliente> listaClientes = new ArrayList<>();
+        ArrayList<treballador> listaTreballador = new ArrayList<>();
+
         boolean salir = false;
         while (!salir){
 
-            int opcion,opcion1,opcion2;
+            int opcion,opcion1,opcion2,opcion3;
             System.out.println(green + "\n--------MENÚ--------" +reset);
             System.out.println("1. Gestionar clientes");
             System.out.println("2. Gestionar productos");
@@ -35,7 +39,47 @@ public class Main {
                         opcion1 = sc.nextInt();
                         switch (opcion1){
                             case 1:
-                                System.out.println("Di de alta!");
+                                System.out.println("----Seleccione tipo de cliente----");
+                                System.out.println("1. Cliente Escola");
+                                System.out.println("2. Cliente Privat");
+                                System.out.print("Seleccione una opcion: ");
+                                sc = new Scanner(System.in);
+                                opcion2 = sc.nextInt();
+                                if (opcion2 == 1){
+                                    ClientEscola clientEscola = new ClientEscola();
+                                    System.out.print("Inserte nombre cliente: ");
+                                    sc = new Scanner(System.in);
+                                    clientEscola.nom = sc.nextLine();
+                                    System.out.print("Inserte DNI: ");
+                                    clientEscola.DNI = sc.nextLine();
+                                    System.out.print("Inserte Correo: ");
+                                    clientEscola.correo = sc.nextLine();
+                                    System.out.print("Inserte Numero: ");
+                                    clientEscola.num =sc.nextLine();
+                                    System.out.print("Inserte nombre de escuela: ");
+                                    clientEscola.setEscola(sc.nextLine());
+                                    clientEscola.tePrestamo = false;
+                                    listaClientes.add(clientEscola);
+                                }
+                                else if (opcion2 == 2){
+                                    ClientPrivat clientPrivat = new ClientPrivat();
+                                    System.out.print("Inserte nombre cliente: ");
+                                    sc = new Scanner(System.in);
+                                    clientPrivat.nom = sc.nextLine();
+                                    System.out.print("Inserte DNI: ");
+                                    clientPrivat.DNI = sc.nextLine();
+                                    System.out.print("Inserte Correo: ");
+                                    clientPrivat.correo = sc.nextLine();
+                                    System.out.print("Inserte Numero: ");
+                                    clientPrivat.num =sc.nextLine();
+                                    System.out.print("Inserte direccion: ");
+                                    clientPrivat.setDireccio(sc.nextLine());
+                                    clientPrivat.tePrestamo = false;
+                                    listaClientes.add(clientPrivat);
+
+                                }
+                                else{System.out.println("opcion no valida");}
+
                                 break;
                             case 2:
                                 System.out.println("Modifiqué!");
@@ -45,6 +89,10 @@ public class Main {
                                 break;
                             case 4:
                                 System.out.println("Listar cliente!");
+                                for(cliente cliente: listaClientes){
+                                    System.out.println(cliente.toString());
+
+                                }
                                 break;
                             case 5:
                                 System.out.println("Buscar cliente");
@@ -72,7 +120,21 @@ public class Main {
                         opcion2 = sc.nextInt();
                         switch (opcion2){
                             case 1:
-                                System.out.println("Estoy gestionando libros!");
+                                System.out.println(green + "\n--------GESTIÓN LIBROS--------" +reset);
+                                System.out.println("1. Dar de alta");
+                                System.out.println("2. Modificar libros");
+                                System.out.println("3. Eliminar libros");
+                                System.out.println("4. Listar libros");
+                                System.out.println("5. Buscar libros");
+                                System.out.println(red + "0. volver" + reset);
+                                System.out.print("Ingresa una opcion: ");
+                                sc = new Scanner(System.in);
+                                opcion3 = sc.nextInt();
+                                switch (opcion3){
+                                    case 1:
+                                        System.out.println("Inserte nombre libro: ");
+                                        break;
+                                }
                                 break;
                             case 2:
                                 System.out.println("Estoy gestionando discos!");

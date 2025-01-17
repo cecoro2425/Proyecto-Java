@@ -5,9 +5,9 @@ public class llibrePapel extends llibre {
     public llibrePapel() {
     }
 
-    public llibrePapel(String codi, String titol, String autor, Integer numPag, String edicio) {
+    public llibrePapel(String codi, String titol, String autor, Integer NumPag, String edicio) {
         super(codi, titol, autor);
-        NumPag = numPag;
+        this.NumPag = NumPag;
         this.edicio = edicio;
     }
 }
