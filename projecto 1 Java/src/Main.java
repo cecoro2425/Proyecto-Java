@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -47,55 +48,34 @@ public class Main {
                                 opcion2 = sc.nextInt();
                                 if (opcion2 == 1){
                                     ClientEscola clientEscola = new ClientEscola();
-                                    System.out.print("Inserte nombre cliente: ");
-                                    sc = new Scanner(System.in);
-                                    clientEscola.nom = sc.nextLine();
-                                    System.out.print("Inserte DNI: ");
-                                    clientEscola.DNI = sc.nextLine();
-                                    System.out.print("Inserte Correo: ");
-                                    clientEscola.correo = sc.nextLine();
-                                    System.out.print("Inserte Numero: ");
-                                    clientEscola.num =sc.nextLine();
-                                    System.out.print("Inserte nombre de escuela: ");
-                                    clientEscola.setEscola(sc.nextLine());
-                                    clientEscola.tePrestamo = false;
-                                    listaClientes.add(clientEscola);
+                                    clientEscola.CrearCliente(clientEscola,listaClientes);
+
                                 }
                                 else if (opcion2 == 2){
                                     ClientPrivat clientPrivat = new ClientPrivat();
-                                    System.out.print("Inserte nombre cliente: ");
-                                    sc = new Scanner(System.in);
-                                    clientPrivat.nom = sc.nextLine();
-                                    System.out.print("Inserte DNI: ");
-                                    clientPrivat.DNI = sc.nextLine();
-                                    System.out.print("Inserte Correo: ");
-                                    clientPrivat.correo = sc.nextLine();
-                                    System.out.print("Inserte Numero: ");
-                                    clientPrivat.num =sc.nextLine();
-                                    System.out.print("Inserte direccion: ");
-                                    clientPrivat.setDireccio(sc.nextLine());
-                                    clientPrivat.tePrestamo = false;
-                                    listaClientes.add(clientPrivat);
+                                    clientPrivat.CrearCliente(clientPrivat,listaClientes);
 
                                 }
                                 else{System.out.println("opcion no valida");}
 
                                 break;
                             case 2:
-                                System.out.println("Modifiqué!");
+                                    new ClientEscola().modificarCliente(listaClientes);
                                 break;
                             case 3:
-                                System.out.println("Eliminar cliente!");
+                                new ClientEscola().eliminarCliente(listaClientes);
                                 break;
                             case 4:
-                                System.out.println("Listar cliente!");
                                 for(cliente cliente: listaClientes){
                                     System.out.println(cliente.toString());
 
                                 }
                                 break;
                             case 5:
-                                System.out.println("Buscar cliente");
+                                System.out.print("Inserte el DNI del cliente: ");
+                                sc = new Scanner(System.in);
+                                String dni = sc.nextLine();
+                                new ClientEscola().buscarCliente(listaClientes, dni);
                                 break;
                             case 0:
                                 System.out.println("Volviendo al menú...");
