@@ -4,55 +4,62 @@ import java.util.Scanner;
 
 public class ClientPrivat extends cliente{
 
-    private String direccio;
-
+    private int edad;
 
     public ClientPrivat() {
     }
 
-    public ClientPrivat(String nom, String correo, String DNI, String num, Boolean tePrestamo, String direccio) {
-        super(nom, correo, DNI, num, tePrestamo);
-        this.direccio = direccio;
+    public ClientPrivat(String nombre, String DNI, String correo, String telefono,String direccion, int edad) {
+        super(nombre,DNI, correo, telefono, direccion);
+        this.edad = edad;
     }
 
-    public String getDireccio() {
-        return direccio;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ClientPrivat that = (ClientPrivat) o;
+        return edad == that.edad;
     }
 
-    public void setDireccio(String direccio) {
-        this.direccio = direccio;
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), edad);
     }
 
     @Override
     public String toString() {
         return "ClientPrivat{" +
-                ", nom='" + nom + '\'' +
+                ", nom='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
                 ", correo='" + correo + '\'' +
-                ", num='" + num + '\'' +
+                ", num='" + telefono + '\'' +
+                ", dirección='" + direccion + '\'' +
                 ", tePrestamo=" + tePrestamo + '\'' +
-                ", direccio='" + direccio  +
+                ", edad='" + edad  +
                 '}';
     }
 
     public void CrearCliente(ClientPrivat clientPrivat, ArrayList<cliente> listaClientes) {
         System.out.print("Inserte nombre cliente: ");
         Scanner sc1 = new Scanner(System.in);
-        clientPrivat.nom = sc1.nextLine();
+        clientPrivat.nombre = sc1.nextLine();
         System.out.print("Inserte DNI: ");
         clientPrivat.DNI = sc1.nextLine();
         System.out.print("Inserte Correo: ");
         clientPrivat.correo = sc1.nextLine();
         System.out.print("Inserte Numero: ");
-        clientPrivat.num =sc1.nextLine();
+        clientPrivat.telefono =sc1.nextLine();
         System.out.print("Inserte direccion: ");
-        clientPrivat.setDireccio(sc1.nextLine());
+        clientPrivat.direccion =sc1.nextLine();
+        System.out.print("Inserte edad: ");
+        clientPrivat.edad =sc1.nextInt();
         clientPrivat.tePrestamo = false;
 
         if (ComprobarDNI(listaClientes, clientPrivat.DNI)) {
             System.out.println("Ya existe un cliente con este DNI.");
         } else {
-
             listaClientes.add(clientPrivat);
             System.out.println("Cliente agregado correctamente.");
         }

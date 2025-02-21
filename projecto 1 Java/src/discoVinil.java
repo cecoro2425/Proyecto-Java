@@ -1,14 +1,14 @@
-public class discoVinil {
-    private String non;
+public class discoVinil extends Producte{
     private String durada;
-    private String autor;
 
     public discoVinil() {
+        super();
     }
 
-    public discoVinil(String non, String durada, String autor) {
-        this.non = non;
+    public discoVinil(String nom, String autor, int codi, boolean disponible,String durada) {
+        super(nom, autor, codi,disponible);
         this.durada = durada;
-        this.autor = autor;
     }
+
+
 }

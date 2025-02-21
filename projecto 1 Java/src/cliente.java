@@ -1,61 +1,21 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class cliente {
-    protected String nom;
-    protected String DNI;
-    protected String correo;
-    protected String num;
+public abstract class cliente extends Persona {
+
     protected Boolean tePrestamo;
 
     public cliente() {
+        super();
     }
 
-    public cliente(String nom, String correo, String DNI, String num, Boolean tePrestamo) {
-        this.nom = nom;
-        this.correo = correo;
-        this.DNI = DNI;
-        this.num = num;
+    public cliente(String nombre, String DNI,String correo, String telefono,String direccion) {
+        super(nombre,correo,DNI,telefono,direccion);
         this.tePrestamo = false;
     }
 
-
-
     public cliente(String DNI) {
         this.DNI = DNI;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getNum() {
-        return num;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
     }
 
     public Boolean getTePrestamo() {
@@ -69,25 +29,12 @@ public abstract class cliente {
     @Override
     public String toString() {
         return "cliente{" +
-                "nom='" + nom + '\'' +
+                "nom='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
                 ", correo='" + correo + '\'' +
-                ", num='" + num + '\'' +
+                ", num='" + telefono + '\'' +
                 ", tePrestamo=" + tePrestamo +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        cliente cliente = (cliente) o;
-        return Objects.equals(nom, cliente.nom) && Objects.equals(DNI, cliente.DNI) && Objects.equals(correo, cliente.correo) && Objects.equals(num, cliente.num) && Objects.equals(tePrestamo, cliente.tePrestamo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nom, DNI, correo, num, tePrestamo);
     }
 
     public void CrearCliente(cliente cliente,ArrayList<cliente> clientes) {
@@ -124,22 +71,23 @@ public abstract class cliente {
             }
                 System.out.print("Inserte nombre cliente: ");
                 String nom = sc.nextLine();
-
                 System.out.print("Inserte Correo: ");
                 String correo = sc.nextLine();
                 System.out.print("Inserte Numero: ");
                 String num =sc.nextLine();
+                System.out.print("Inserte dirección: ");
+                String direccion =sc.nextLine();
                 boolean prestamo = clienteEncontrado.tePrestamo;
                 if (clienteEncontrado instanceof ClientEscola) {
                     System.out.print("Inserte nombre de escuela: ");
                     String escola = sc.nextLine();
-                    listaClientes.set(listaClientes.indexOf(clienteEncontrado), new ClientEscola(nom,correo,dni,num,prestamo,escola));
+                    listaClientes.set(listaClientes.indexOf(clienteEncontrado), new ClientEscola(nom,dni,correo,num,direccion,escola));
                     System.out.println("Cliente modificado correctamente.");
                 }
                 else if (clienteEncontrado instanceof ClientPrivat) {
                     System.out.print("Inserte direccio: ");
-                    String direccio = sc.nextLine();
-                    listaClientes.set(listaClientes.indexOf(clienteEncontrado), new ClientPrivat(nom,correo,dni,num,prestamo,direccio));
+                    int edad = sc.nextInt();
+                    listaClientes.set(listaClientes.indexOf(clienteEncontrado), new ClientPrivat(nom,dni,correo,num,direccion,edad));
                     System.out.println("Cliente modificado correctamente.");
                 }
     }

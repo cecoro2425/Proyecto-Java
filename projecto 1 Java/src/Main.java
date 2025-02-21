@@ -49,12 +49,10 @@ public class Main {
                                 if (opcion2 == 1){
                                     ClientEscola clientEscola = new ClientEscola();
                                     clientEscola.CrearCliente(clientEscola,listaClientes);
-
                                 }
                                 else if (opcion2 == 2){
                                     ClientPrivat clientPrivat = new ClientPrivat();
                                     clientPrivat.CrearCliente(clientPrivat,listaClientes);
-
                                 }
                                 else{System.out.println("opcion no valida");}
 
@@ -68,7 +66,6 @@ public class Main {
                             case 4:
                                 for(cliente cliente: listaClientes){
                                     System.out.println(cliente.toString());
-
                                 }
                                 break;
                             case 5:
@@ -101,7 +98,7 @@ public class Main {
                         switch (opcion2){
                             case 1:
                                 System.out.println(green + "\n--------GESTIÓN LIBROS--------" +reset);
-                                System.out.println("1. Dar de alta");
+                                System.out.println("1. Insertar libro");
                                 System.out.println("2. Modificar libros");
                                 System.out.println("3. Eliminar libros");
                                 System.out.println("4. Listar libros");
@@ -112,7 +109,15 @@ public class Main {
                                 opcion3 = sc.nextInt();
                                 switch (opcion3){
                                     case 1:
-                                        System.out.println("Inserte nombre libro: ");
+                                       System.out.println("----Seleccione tipo de libro----");
+                                       System.out.println("1. Libro de papel");
+                                       System.out.println("2. Audio libro");
+                                       System.out.print("Seleccione una opcion: ");
+                                       sc = new Scanner(System.in);
+                                       opcion2 = sc.nextInt();
+                                       if (opcion2 == 1){
+
+                                       }
                                         break;
                                 }
                                 break;
@@ -145,19 +150,25 @@ public class Main {
                         opcion1 = sc.nextInt();
                         switch (opcion1){
                             case 1:
-                                System.out.println("Di de alta al trabajador!");
+                                treballador treballador = new treballador();
+                                treballador.CrearTreballador(treballador,listaTreballador);
                                 break;
                             case 2:
-                                System.out.println("Modifiqué trabajador!");
+                                new treballador().modificarTreballador(listaTreballador);
                                 break;
                             case 3:
-                                System.out.println("Eliminar trabajador!");
+                                new treballador().eliminarTreballador(listaTreballador);
                                 break;
                             case 4:
-                                System.out.println("Listar trabajadores!");
+                                for(treballador treballador1: listaTreballador){
+                                    System.out.println(treballador1.toString());
+                                }
                                 break;
                             case 5:
-                                System.out.println("Buscar trabajador");
+                                System.out.print("Inserte el codi del trabajador: ");
+                                sc = new Scanner(System.in);
+                                int codi = sc.nextInt();
+                                new treballador().buscarTreballador(listaTreballador, codi);
                                 break;
                             case 0:
                                 System.out.println("Volviendo al menú...");

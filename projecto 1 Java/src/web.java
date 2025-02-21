@@ -8,10 +8,11 @@ public class web {
     public web() {
     }
 
-    public web(String nom, String nomEmp, String idMerc, String domicilio) {
+    public web(String nom, String nomEmp, String idMerc, String domicilio, String telefon) {
         this.nom = nom;
         this.nomEmp = nomEmp;
         this.idMerc = idMerc;
         this.domicilio = domicilio;
+        this.telefon = telefon;
     }
 }

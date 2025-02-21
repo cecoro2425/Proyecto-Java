@@ -13,8 +13,8 @@ public class ClientEscola extends cliente{
         super(dni);
     }
 
-    public ClientEscola(String nom, String correo, String DNI, String num, Boolean tePrestamo, String escola) {
-        super(nom, correo, DNI, num, tePrestamo);
+    public ClientEscola(String nombre, String DNI, String correo, String telefono,String direccion, String escola) {
+        super(nombre,DNI, correo, telefono, direccion);
         this.Escola = escola;
     }
 
@@ -29,26 +29,28 @@ public class ClientEscola extends cliente{
     @Override
     public String toString() {
         return "ClientEscola{" +
-                " nom='" + nom + '\'' +
+                " nom='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
                 ", correo='" + correo + '\'' +
-                ", num='" + num + '\'' +
+                ", num='" + telefono + '\'' +
+                ", dirección='" + direccion + '\'' +
                 ", tePrestamo=" + tePrestamo + '\''+
-                "Escola='" + Escola +
+                ", Escola='" + Escola +
         '}';
     }
-
 
     public void CrearCliente(ClientEscola clientEscola, ArrayList<cliente> listaClientes) {
         System.out.print("Inserte nombre cliente: ");
         Scanner sc = new Scanner(System.in);
-        clientEscola.nom = sc.nextLine();
+        clientEscola.nombre = sc.nextLine();
         System.out.print("Inserte DNI: ");
         clientEscola.DNI = sc.nextLine();
         System.out.print("Inserte Correo: ");
         clientEscola.correo = sc.nextLine();
         System.out.print("Inserte Numero: ");
-        clientEscola.num =sc.nextLine();
+        clientEscola.telefono =sc.nextLine();
+        System.out.print("Inserte dirección: ");
+        clientEscola.direccion =sc.nextLine();
         System.out.print("Inserte nombre de escuela: ");
         clientEscola.setEscola(sc.nextLine());
         clientEscola.tePrestamo = false;
