@@ -36,7 +36,7 @@ public class ClientPrivat extends cliente{
                 ", correo='" + correo + '\'' +
                 ", num='" + telefono + '\'' +
                 ", dirección='" + direccion + '\'' +
-                ", tePrestamo=" + tePrestamo + '\'' +
+                ", "+VerificaObjeto() +
                 ", edad='" + edad  +
                 '}';
     }
@@ -55,7 +55,7 @@ public class ClientPrivat extends cliente{
         clientPrivat.direccion =sc1.nextLine();
         System.out.print("Inserte edad: ");
         clientPrivat.edad =sc1.nextInt();
-        clientPrivat.tePrestamo = false;
+
 
         if (ComprobarDNI(listaClientes, clientPrivat.DNI)) {
             System.out.println("Ya existe un cliente con este DNI.");

@@ -34,7 +34,7 @@ public class ClientEscola extends cliente{
                 ", correo='" + correo + '\'' +
                 ", num='" + telefono + '\'' +
                 ", dirección='" + direccion + '\'' +
-                ", tePrestamo=" + tePrestamo + '\''+
+                VerificaObjeto()+
                 ", Escola='" + Escola +
         '}';
     }
@@ -53,7 +53,6 @@ public class ClientEscola extends cliente{
         clientEscola.direccion =sc.nextLine();
         System.out.print("Inserte nombre de escuela: ");
         clientEscola.setEscola(sc.nextLine());
-        clientEscola.tePrestamo = false;
         if (ComprobarDNI(listaClientes, clientEscola.DNI)) {
             System.out.println("Ya existe un cliente con este DNI.");
         } else {

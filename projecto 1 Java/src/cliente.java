@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class cliente extends Persona {
+public class cliente extends Persona {
 
-    protected Boolean tePrestamo;
+    protected Producte Producte;
 
     public cliente() {
         super();
@@ -11,19 +11,34 @@ public abstract class cliente extends Persona {
 
     public cliente(String nombre, String DNI,String correo, String telefono,String direccion) {
         super(nombre,correo,DNI,telefono,direccion);
-        this.tePrestamo = false;
+
     }
 
     public cliente(String DNI) {
         this.DNI = DNI;
     }
 
-    public Boolean getTePrestamo() {
-        return tePrestamo;
+    public Producte getProducte() {
+        return Producte;
     }
 
-    public void setTePrestamo(Boolean tePrestamo) {
-        this.tePrestamo = tePrestamo;
+    public void setProducte(Producte producte) {
+        Producte = producte;
+    }
+
+
+    public cliente insertarProducte(Producte producte) {
+        this.Producte = producte;
+        return this;
+    }
+
+    public String VerificaObjeto() {
+        if(Producte != null){
+            return "Producte=" + getProducte();
+        }
+        else {
+            return "Sin producte";
+        }
     }
 
     @Override
@@ -32,8 +47,9 @@ public abstract class cliente extends Persona {
                 "nom='" + nombre + '\'' +
                 ", DNI='" + DNI + '\'' +
                 ", correo='" + correo + '\'' +
-                ", num='" + telefono + '\'' +
-                ", tePrestamo=" + tePrestamo +
+                ", num='" + telefono + '\''+
+                VerificaObjeto()
+                 +
                 '}';
     }
 
@@ -77,7 +93,6 @@ public abstract class cliente extends Persona {
                 String num =sc.nextLine();
                 System.out.print("Inserte dirección: ");
                 String direccion =sc.nextLine();
-                boolean prestamo = clienteEncontrado.tePrestamo;
                 if (clienteEncontrado instanceof ClientEscola) {
                     System.out.print("Inserte nombre de escuela: ");
                     String escola = sc.nextLine();
@@ -117,4 +132,6 @@ public abstract class cliente extends Persona {
 
         }
     }
+
+
 }

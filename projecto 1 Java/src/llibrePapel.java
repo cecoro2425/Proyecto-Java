@@ -5,9 +5,16 @@ public class llibrePapel extends llibre {
     public llibrePapel() {
     }
 
-    public llibrePapel(String codi, String titol, String autor, int NumPag, String edicio) {
-        super(codi, titol, autor);
+    public llibrePapel(String nom, String autor, int codi, boolean disponible,String descripcio,int NumPag,String edicio) {
+        super(nom, autor, codi,disponible,descripcio);
         this.NumPag = NumPag;
         this.edicio = edicio;
     }
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", Número de páginas: " + NumPag +
+                ", Edición: " + edicio;
+    }
+
 }

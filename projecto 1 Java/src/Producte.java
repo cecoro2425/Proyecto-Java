@@ -1,4 +1,4 @@
-public abstract class Producte {
+public class Producte {
     protected String nom;
     protected String autor;
     protected int codi;
@@ -12,8 +12,5 @@ public abstract class Producte {
     }
 
     public Producte() {
-
     }
-
-
 }
